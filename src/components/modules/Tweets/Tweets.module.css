@@ -1,28 +1,27 @@
-.cardWrapper {
-  /* background-color: aqua; */
-}
-
-.picture {
+/* .picture {
   width: 308px;
   height: 160px;
-  z-index: 1;
-}
+} */
 
 .list {
   display: flex;
   gap: 20px;
+  padding: 28px 38px;
 }
 
 .item {
-  /* background: linear-gradient(
+  background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
     #5736a3 54.28%,
     #4b2a99 78.99%
-  ); */
+  );
+
+  padding: 20px;
+  padding-bottom: 36px;
 
   width: 360px;
-  height: 380px;
+  /* height: 380px; */
 
   border: 1px solid black;
 }

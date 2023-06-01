@@ -10,6 +10,14 @@ body {
 
   /* background-color: #b6aad2; */
   background-color: #ede9f5;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #ebd8ff;
 }
 
 code {
@@ -17,6 +25,14 @@ code {
     monospace;
 }
 
+h3,
+p {
+  font-size: inherit;
+  margin: 0;
+}
+
 ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }

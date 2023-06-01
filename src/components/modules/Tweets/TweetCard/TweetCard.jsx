@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import canvas from '../../../../img/picture.png';
+import logo from '../../../../img/logo.png';
+
+import css from './TweetCard.module.css';
+
 const TweetCard = ({ user: { id, user, avatar, tweets, followers } }) => {
   const [value, setValue] = useState(followers);
   const [texBtn, setTextBtn] = useState('Follow');
@@ -31,16 +36,28 @@ const TweetCard = ({ user: { id, user, avatar, tweets, followers } }) => {
     setTextBtn(prevText => (prevText !== 'Following' ? 'Following' : 'Follow'));
   };
 
+  const styles = texBtn === 'Following' ? css.followingBtn : css.followBtn;
+
   return (
-    <>
-      <h3>{user}</h3>
-      <img src={avatar} alt="avatar" />
-      <p>Tweets: {tweets}</p>
-      <p>Followers: {formatted}</p>
-      <button type="button" onClick={handleClick}>
-        {texBtn}
-      </button>
-    </>
+    <div className={css.container}>
+      <img src={logo} alt="" className={css.logo} />
+      <div className={css.logoWrapper}>
+        <img src={canvas} alt="canvas" className={css.picture} />
+      </div>
+      <div className={css.tweetWrapper}>
+        {/* <h3>{user}</h3> */}
+        <img src={avatar} alt="avatar" className={css.avatar} />
+        <p className={css.text}>Tweets: {tweets}</p>
+        <p>Followers: {formatted}</p>
+        <button
+          type="button"
+          onClick={handleClick}
+          className={`${css.btn} ${styles}`}
+        >
+          {texBtn}
+        </button>
+      </div>
+    </div>
   );
 };
 

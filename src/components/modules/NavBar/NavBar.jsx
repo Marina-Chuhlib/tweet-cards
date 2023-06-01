@@ -18,9 +18,9 @@ const NavBar = () => {
               component="a"
               href="/tweet-cards"
               sx={{
-                mr: 12,
+                mr: 'auto',
                 display: { md: 'flex' },
-                fontFamily: 'roboto',
+                fontFamily: 'inherit',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: '#471CA9',
@@ -38,11 +38,12 @@ const NavBar = () => {
               sx={{
                 mr: 12,
                 display: { md: 'flex' },
-                fontFamily: 'roboto',
+                fontFamily: 'inherit',
                 fontWeight: 700,
-                letterSpacing: '.3rem',
+                // letterSpacing: '.3rem',
                 color: '#471CA9',
                 textDecoration: 'none',
+                marginRight: '26px',
               }}
             >
               Tweets

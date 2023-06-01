@@ -16,7 +16,13 @@ const Tweets = () => {
   }, []);
 
   const getUsers = async () => {
-    const { data: users } = await instance.get('/tweets');
+    const { data: users } = await instance.get('/tweets', {
+      params: {
+        completed: false,
+        limit: 3,
+        page: 1,
+      },
+    });
     setUsers(users);
     return users;
   };
@@ -29,6 +35,7 @@ const Tweets = () => {
           alt="picture"
           className={css.picture}
         /> */}
+
         <div className={css.cardWrapper}>
           {users.length > 0 && (
             <ul className={css.list}>

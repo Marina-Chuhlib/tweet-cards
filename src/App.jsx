@@ -7,8 +7,9 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}></Route>
-        <Route path='/tweets' element={<Tweets/>}></Route>
+        <Route path="/" element={<Layout />}>
+          <Route path="tweets" element={<Tweets />}></Route>
+        </Route>
       </Routes>
     </>
   );
