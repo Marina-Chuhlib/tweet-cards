@@ -10,7 +10,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-    Test  Go It
+  Go It test
     </div>
   );
 };
