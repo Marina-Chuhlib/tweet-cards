@@ -3,33 +3,29 @@
   position: relative;
   flex-direction: column;
   justify-content: center;
-
-  border: 2px solid rgb(250, 223, 114);
 }
+
 .logoWrapper {
+  display: inline;
   flex: 50%;
   padding: 8px 16px 18px 16px;
-  border-bottom-width: 10px;
-  border-color: #ebd8ff;
-  border-bottom-style: solid;
 }
 
 .logo {
   position: absolute;
   top: 0;
   left: 0;
-  /* margin-right: auto; */
 }
 
 .tweetWrapper {
   flex: 50%;
   margin-top: 60px;
-  border: 1px solid salmon;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .picture {
   display: block;
   width: 100%;
@@ -38,13 +34,26 @@
   margin-left: auto;
 }
 
-.avatar {
+.circle {
   position: absolute;
-  top: 40%;
   width: 80px;
   height: 80px;
+  left: 50%px;
+  top: 42%;
+  background: #ebd8ff;
+  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
+    inset 0px -2.19582px 4.39163px #ae7be3,
+    inset 0px 4.39163px 3.29372px #fbf8ff;
+  border-radius: 50%;
+}
 
-  border: 10px solid #ebd8ff;
+.avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
   border-radius: 50px;
 }
 
@@ -73,6 +82,30 @@
   background-color: #5cd3a8;
 }
 
+.followingBtn:hover {
+  background: linear-gradient(290.46deg, #5cd3a8 0%, #59b0b8 107.89%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #5f269c;
+}
+
+/* .followingBtn:focus {
+  background: linear-gradient(290.46deg, #5cd3a8 0%, #59b0b8 107.89%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #5f269c;
+} */
+
 .followBtn {
   background-color: #ebd8ff;
+}
+
+.followBtn:hover {
+  background: linear-gradient(290.46deg, #ebd8ff 0%, #b99ec0 107.89%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #5f269c;
+}
+
+.followBtn:focus {
+  background: linear-gradient(290.46deg, #ebd8ff 0%, #b99ec0 107.89%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #5f269c;
 }

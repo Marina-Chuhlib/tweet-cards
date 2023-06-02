@@ -6,14 +6,17 @@ import logo from '../../../../img/logo.png';
 
 import css from './TweetCard.module.css';
 
-const TweetCard = ({ user: { id, user, avatar, tweets, followers } }) => {
+const TweetCard = ({ user: { id, avatar, tweets, followers } }) => {
   const [value, setValue] = useState(followers);
-  const [texBtn, setTextBtn] = useState('Follow');
+  const [texBtn, setTextBtn] = useState(
+    JSON.parse(localStorage.getItem(`status_id_${id}`)) || 'Follow'
+  );
 
   const formatted = value.toLocaleString('en-US', { useGrouping: true });
 
   const handleClick = () => {
     const newValue = texBtn === 'Following' ? value - 1 : value + 1;
+
     setValue(newValue);
     fetchUpdateTweet(id, newValue);
     toggleButton();
@@ -36,6 +39,10 @@ const TweetCard = ({ user: { id, user, avatar, tweets, followers } }) => {
     setTextBtn(prevText => (prevText !== 'Following' ? 'Following' : 'Follow'));
   };
 
+  if (texBtn === 'Following') {
+    localStorage.setItem(`status_id_${id}`, JSON.stringify(texBtn));
+  }
+
   const styles = texBtn === 'Following' ? css.followingBtn : css.followBtn;
 
   return (
@@ -45,8 +52,9 @@ const TweetCard = ({ user: { id, user, avatar, tweets, followers } }) => {
         <img src={canvas} alt="canvas" className={css.picture} />
       </div>
       <div className={css.tweetWrapper}>
-        {/* <h3>{user}</h3> */}
-        <img src={avatar} alt="avatar" className={css.avatar} />
+        <div className={css.circle}>
+          <img src={avatar} alt="avatar" className={css.avatar} />
+        </div>
         <p className={css.text}>Tweets: {tweets}</p>
         <p>Followers: {formatted}</p>
         <button
