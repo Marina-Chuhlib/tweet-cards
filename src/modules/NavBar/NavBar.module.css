@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+  color: rgb(162, 128, 217);
+}
+
+.link:global(.active) {
+  color: #471ca9;
+  font-weight: bold;
+  justify-content: space-between;
+}

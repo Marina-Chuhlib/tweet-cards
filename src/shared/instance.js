@@ -6,9 +6,4 @@ const instance = axios.create({
   },
 });
 
-// export const getUsers = async () => {
-//   const { data: users } = await instance.get('/tweets');
-//   return users;
-// };
-
 export default instance;
