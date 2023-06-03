@@ -4,18 +4,16 @@ import instance from 'shared/instance';
 import canvas from '../../../img/picture.png';
 import logo from '../../../img/logo.png';
 
-import Loader from 'shared/Loader/Loader';
 import css from './TweetCard.module.css';
 
 const TweetCard = ({
-  user: { id, avatar, tweets, followers, isFollowers, user },
+  user: { id, avatar, tweets, followers, isFollowers,  },
   setUsers,
 }) => {
   const [value, setValue] = useState(followers);
   const text = isFollowers ? 'Following' : 'Follow';
   const [texBtn, setTextBtn] = useState(text);
   const [isFollow, setIsFollow] = useState(isFollowers);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const formatted = value.toLocaleString('en-US', { useGrouping: true });
 

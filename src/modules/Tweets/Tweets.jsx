@@ -43,7 +43,7 @@ const Tweets = () => {
     if (lastCardRef.current) {
       lastCardRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [users]);
+  }, [currentPage]);
 
   const loadMoreBtn = async () => {
     const nextPage = currentPage + 1;
