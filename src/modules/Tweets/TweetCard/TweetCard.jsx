@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import instance from 'shared/instance';
 
@@ -7,7 +8,7 @@ import logo from '../../../img/logo.png';
 import css from './TweetCard.module.css';
 
 const TweetCard = ({
-  user: { id, avatar, tweets, followers, isFollowers,  },
+  user: { id, avatar, tweets, followers, isFollowers },
   setUsers,
 }) => {
   const [value, setValue] = useState(followers);
@@ -65,6 +66,7 @@ const TweetCard = ({
   };
 
   const styles = texBtn === 'Following' ? css.followingBtn : css.followBtn;
+
   return (
     <div className={css.container}>
       <img src={logo} alt="" className={css.logo} />
@@ -90,3 +92,13 @@ const TweetCard = ({
 };
 
 export default TweetCard;
+
+TweetCard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    isFollowers: PropTypes.bool.isRequired,
+  }).isRequired,
+};

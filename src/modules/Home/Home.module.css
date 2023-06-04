@@ -1,0 +1,22 @@
+.link {
+  display: block;
+  text-align: center;
+}
+
+.link:hover {
+  color: #a374cf;
+}
+
+.imgWrapper {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .imgWrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 42px;
+  }
+}

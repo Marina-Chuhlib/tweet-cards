@@ -1,9 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://647874fa362560649a2dceb2.mockapi.io/app',
-  params: {
-    _limit: 3,
-  },
 });
 
 export default instance;

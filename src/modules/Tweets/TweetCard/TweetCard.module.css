@@ -21,6 +21,7 @@
 .tweetWrapper {
   margin-top: 40px;
 }
+
 @media screen and (min-width: 950px) {
   .tweetWrapper {
     flex: 50%;
@@ -38,7 +39,6 @@
   height: 100%;
   margin-right: auto;
   margin-left: auto;
-  /* padding-top: 60px; */
   margin-bottom: 85px;
 }
 
@@ -104,11 +104,11 @@
   color: #5f269c;
 }
 
-/* .followingBtn:focus {
+.followingBtn:focus {
   background: linear-gradient(290.46deg, #5cd3a8 0%, #59b0b8 107.89%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #5f269c;
-} */
+}
 
 .followBtn {
   background-color: #ebd8ff;

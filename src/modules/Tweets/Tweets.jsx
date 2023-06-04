@@ -6,6 +6,8 @@ import instance from 'shared/instance';
 
 import Loader from 'shared/Loader/Loader';
 
+import * as toasty from '../../shared/toastify';
+
 import css from './Tweets.module.css';
 
 const Tweets = () => {
@@ -13,6 +15,7 @@ const Tweets = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasPage, setHasPage] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('');
   const lastCardRef = useRef(null);
 
   const getUsers = async page => {
@@ -58,31 +61,13 @@ const Tweets = () => {
     }
   };
 
-  const handleFilterChange = async event => {
-    const selectedFilter = event.target.value;
-
-    switch (selectedFilter) {
-      case 'following':
-        await followingFilter();
-        break;
-      case 'follow':
-        await followFilter();
-        break;
-      case 'allTweets':
-        await allTweetsFilter();
-        break;
-      default:
-        break;
-    }
-  };
-
   const followingFilter = async () => {
     const getAllUsers = await getUsers();
     const followers = getAllUsers.filter(user => user.isFollowers === true);
     if (followers.length === 0) {
-      alert('List empty');
-      return;
+      return toasty.toastInfo('Following list empty');
     }
+    setActiveFilter('following');
     return setUsers(followers);
   };
 
@@ -90,9 +75,9 @@ const Tweets = () => {
     const getAllUsers = await getUsers();
     const followers = getAllUsers.filter(user => user.isFollowers !== true);
     if (followers.length === 0) {
-      alert('List empty');
-      return;
+      return toasty.toastInfo('Follow list empty');
     }
+    setActiveFilter('follow');
 
     return setUsers(followers);
   };
@@ -101,6 +86,7 @@ const Tweets = () => {
     const allUsers = await getUsers();
     setUsers(allUsers);
     setHasPage(false);
+    setActiveFilter('allTweets');
     return;
   };
 
@@ -124,7 +110,7 @@ const Tweets = () => {
                 );
               })}
             </ul>
-            {hasPage ? (
+            {hasPage && !activeFilter ? (
               <>
                 <button onClick={loadMoreBtn} className={css.loadMoreBtn}>
                   Load more tweets
@@ -137,23 +123,30 @@ const Tweets = () => {
         )}
 
         <div className={css.filter}>
-          <select onChange={handleFilterChange} className={css.select}>
-            <option disabled selected value="">
-              Select Filter
-            </option>
-            <option value="following">Show Following</option>
-            <option value="follow">Show Follow</option>
-            <option value="allTweets">Show all tweets</option>
-          </select>
-
-          {/* <select onChange={handleFilterChange} className={css.select}>
-            <option disabled selected value="Hello">
-              Select Filter
-            </option>
-            <option value="allTweets">Show all tweets</option>
-            <option value="following">Show Following</option>
-            <option value="follow">Show Follow</option>
-          </select> */}
+          <button
+            onClick={followingFilter}
+            className={`${css.filterBtn} ${
+              activeFilter === 'following' ? 'active' : ''
+            }`}
+          >
+            Show following
+          </button>
+          <button
+            onClick={followFilter}
+            className={`${css.filterBtn} ${
+              activeFilter === 'follow' ? 'active' : ''
+            }`}
+          >
+            Show Follow
+          </button>
+          <button
+            onClick={allTweetsFilter}
+            className={`${css.filterBtn} ${
+              activeFilter === 'allTweets' ? 'active' : ''
+            }`}
+          >
+            Show all tweets
+          </button>
         </div>
       </section>
     </>

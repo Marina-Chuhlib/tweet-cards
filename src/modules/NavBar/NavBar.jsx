@@ -22,7 +22,7 @@ const NavBar = () => {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters component="nav">
-            <Home sx={{ display: { md: 'flex' }, mr: 1, color: '#471CA9' }} />
+            <Home sx={{ display: { md: 'flex' }, mr: 1, color: '#471CA9',  }} fontSize="large"/>
             <NavLink
               to="/"
               className={css.link}

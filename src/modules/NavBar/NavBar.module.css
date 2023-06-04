@@ -2,9 +2,16 @@
   text-decoration: none;
   color: rgb(162, 128, 217);
 }
+.link:hover {
+  color: rgb(137, 97, 201);
+}
 
 .link:global(.active) {
   color: #471ca9;
   font-weight: bold;
   justify-content: space-between;
+}
+
+.link:global(.active):hover {
+  color: rgb(137, 97, 201);
 }
