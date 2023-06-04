@@ -1,10 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
-
-import TweetCard from './TweetCard/TweetCard';
-
 import instance from 'shared/instance';
 
 import Loader from 'shared/Loader/Loader';
+import TweetCard from './TweetCard/TweetCard';
 
 import * as toasty from '../../shared/toastify';
 
@@ -94,6 +92,7 @@ const Tweets = () => {
     <>
       <section className={css.container}>
         {isLoading && <Loader />}
+        <h2 className={css.visuallyHidden}>Tweets</h2>
         {users.length > 0 && !isLoading && (
           <div className={css.cardWrapper}>
             <ul className={css.list}>
