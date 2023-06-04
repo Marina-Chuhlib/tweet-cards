@@ -16,14 +16,13 @@ from [https://nodejs.org/en/]. Node.js version 12 or higher is required.
 
 ## Installation
 
-1. Open the terminal and clone the YourPet Frontend repository to your local
-   machine using the command
-   `git clone https://github.com/Marina-Chuhlib/tweet-cards`.
+1. Open the terminal and clone the Tweet-carts repository to your local machine
+   using the command `git clone https://github.com/Marina-Chuhlib/tweet-cards`.
 2. Navigate to the project directory using `cd tweet-cards`.
 3. Run the command `npm install` to install the project dependencies.
 
 ## Usage
 
 After installing the dependencies, run the command `npm start` to start the
-project. Open your browser and go to http://localhost:3000 to view the YourPet
+project. Open your browser and go to http://localhost:3000 to view the Tweets
 application.
