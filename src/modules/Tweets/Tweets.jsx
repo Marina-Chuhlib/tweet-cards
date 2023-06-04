@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import instance from 'shared/instance';
+import { useNavigate } from 'react-router-dom';
 
 import Loader from 'shared/Loader/Loader';
 import TweetCard from './TweetCard/TweetCard';
@@ -15,6 +16,8 @@ const Tweets = () => {
   const [hasPage, setHasPage] = useState(true);
   const [activeFilter, setActiveFilter] = useState('');
   const lastCardRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const getUsers = async page => {
     try {
@@ -88,11 +91,16 @@ const Tweets = () => {
     return;
   };
 
+  const goBackBtn = () => {
+    navigate('/');
+  };
+
   return (
     <>
       <section className={css.container}>
         {isLoading && <Loader />}
         <h2 className={css.visuallyHidden}>Tweets</h2>
+
         {users.length > 0 && !isLoading && (
           <div className={css.cardWrapper}>
             <ul className={css.list}>
@@ -118,6 +126,9 @@ const Tweets = () => {
             ) : (
               <p className={css.notification}>Reached the end of the list</p>
             )}
+            <button onClick={goBackBtn} className={css.goBackBtn}>
+              Back
+            </button>
           </div>
         )}
 

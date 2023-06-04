@@ -99,7 +99,8 @@
   font-size: 16px;
 }
 
-.loadMoreBtn {
+.loadMoreBtn,
+.goBackBtn {
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -119,7 +120,12 @@
   text-transform: uppercase;
 }
 
-.loadMoreBtn:hover {
+.goBackBtn {
+  margin-left: 40px;
+}
+
+.loadMoreBtn:hover,
+.goBackBtn:hover {
   background: linear-gradient(290.46deg, #ebd8ff 0%, #b99ec0 107.89%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #5f269c;
