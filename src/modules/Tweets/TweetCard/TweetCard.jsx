@@ -112,4 +112,6 @@ TweetCard.propTypes = {
     followers: PropTypes.number.isRequired,
     isFollowers: PropTypes.bool.isRequired,
   }).isRequired,
+  setUsers: PropTypes.func.isRequired,
+  activeFilter: PropTypes.string.isRequired,
 };
