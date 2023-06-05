@@ -112,7 +112,12 @@ const Tweets = () => {
                     className={css.item}
                     ref={isLastCard ? lastCardRef : null}
                   >
-                    <TweetCard user={user} id={user.id} setUsers={setUsers} />
+                    <TweetCard
+                      user={user}
+                      id={user.id}
+                      setUsers={setUsers}
+                      activeFilter={activeFilter}
+                    />
                   </li>
                 );
               })}

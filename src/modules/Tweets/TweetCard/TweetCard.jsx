@@ -10,6 +10,7 @@ import css from './TweetCard.module.css';
 const TweetCard = ({
   user: { id, avatar, tweets, followers, isFollowers },
   setUsers,
+  activeFilter,
 }) => {
   const [value, setValue] = useState(followers);
   const text = isFollowers ? 'Following' : 'Follow';
@@ -37,16 +38,26 @@ const TweetCard = ({
       });
 
       setUsers(prevUsers =>
-        prevUsers.map(user => {
-          if (user.id === id) {
-            return {
-              ...user,
-              followers: value,
-              isFollowers: isFollow,
-            };
-          }
-          return user;
-        })
+        prevUsers
+          .map(user => {
+            if (user.id === id) {
+              if (
+                activeFilter &&
+                (activeFilter === 'following' || activeFilter === 'follow')
+              ) {
+                return null;
+              } else {
+                return {
+                  ...user,
+                  followers: value,
+                  isFollowers: isFollow,
+                };
+              }
+            }
+
+            return user;
+          })
+          .filter(user => user !== null)
       );
 
       if (!data) {
