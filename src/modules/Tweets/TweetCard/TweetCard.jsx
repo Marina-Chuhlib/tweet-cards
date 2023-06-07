@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import instance from 'shared/instance';
 
-import canvas from '../../../img/picture.png';
 import logo from '../../../img/logo.png';
 
 import css from './TweetCard.module.css';
@@ -81,9 +80,7 @@ const TweetCard = ({
   return (
     <div className={css.container}>
       <img src={logo} alt="" className={css.logo} />
-      <div className={css.logoWrapper}>
-        <img src={canvas} alt="canvas" className={css.picture} />
-      </div>
+      <div className={css.logoWrapper}></div>
       <div className={css.tweetWrapper}>
         <div className={css.circle}>
           <img src={avatar} alt="avatar" className={css.avatar} />

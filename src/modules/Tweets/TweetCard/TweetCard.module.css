@@ -1,3 +1,11 @@
+.logoWrapper {
+  display: block;
+  background-image: url('../../../img/picture.png');
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 16px;
+}
+
 @media screen and (min-width: 500px) {
   .container {
     display: flex;
@@ -7,9 +15,7 @@
 }
 
 .logoWrapper {
-  display: inline;
-  flex: 50%;
-  padding: 8px 16px 18px 16px;
+  height: 168px;
 }
 
 .logo {
@@ -19,17 +25,17 @@
 }
 
 .tweetWrapper {
-  margin-top: 40px;
+  margin-top: 95px;
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 767px) {
   .tweetWrapper {
     flex: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
+    margin-top: 70px;
   }
 }
 
@@ -66,20 +72,17 @@
   border-radius: 50px;
 }
 
-.text {
-  margin-top: 40px;
-}
-
 .text:not(:last-child) {
   margin-bottom: 16px;
 }
 
 .btn {
+  padding: 0;
   display: block;
   margin-right: auto;
   margin-left: auto;
   cursor: pointer;
-  width: 169px;
+  width: 196px;
   height: 50px;
   color: #373737;
   border: none;
