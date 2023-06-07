@@ -1,25 +1,23 @@
 {
   "files": {
     "main.css": "/tweet-cards/static/css/main.e4a4768d.css",
-    "main.js": "/tweet-cards/static/js/main.e4e53d64.js",
-    "static/css/551.0e06d165.chunk.css": "/tweet-cards/static/css/551.0e06d165.chunk.css",
-    "static/js/551.fd5a33f3.chunk.js": "/tweet-cards/static/js/551.fd5a33f3.chunk.js",
-    "static/css/616.82f89c8d.chunk.css": "/tweet-cards/static/css/616.82f89c8d.chunk.css",
-    "static/js/616.a8bbab1e.chunk.js": "/tweet-cards/static/js/616.a8bbab1e.chunk.js",
-    "static/js/755.299222cb.chunk.js": "/tweet-cards/static/js/755.299222cb.chunk.js",
+    "main.js": "/tweet-cards/static/js/main.ab0f997a.js",
+    "static/css/551.99239681.chunk.css": "/tweet-cards/static/css/551.99239681.chunk.css",
+    "static/js/551.766610c6.chunk.js": "/tweet-cards/static/js/551.766610c6.chunk.js",
+    "static/css/590.8f2c3ec1.chunk.css": "/tweet-cards/static/css/590.8f2c3ec1.chunk.css",
+    "static/js/590.47cff92b.chunk.js": "/tweet-cards/static/js/590.47cff92b.chunk.js",
     "static/media/following.jpg": "/tweet-cards/static/media/following.c5e054543fb4714cb733.jpg",
     "static/media/follow.jpg": "/tweet-cards/static/media/follow.611fa2d8b4a2580a7fb3.jpg",
     "index.html": "/tweet-cards/index.html",
     "main.e4a4768d.css.map": "/tweet-cards/static/css/main.e4a4768d.css.map",
-    "main.e4e53d64.js.map": "/tweet-cards/static/js/main.e4e53d64.js.map",
-    "551.0e06d165.chunk.css.map": "/tweet-cards/static/css/551.0e06d165.chunk.css.map",
-    "551.fd5a33f3.chunk.js.map": "/tweet-cards/static/js/551.fd5a33f3.chunk.js.map",
-    "616.82f89c8d.chunk.css.map": "/tweet-cards/static/css/616.82f89c8d.chunk.css.map",
-    "616.a8bbab1e.chunk.js.map": "/tweet-cards/static/js/616.a8bbab1e.chunk.js.map",
-    "755.299222cb.chunk.js.map": "/tweet-cards/static/js/755.299222cb.chunk.js.map"
+    "main.ab0f997a.js.map": "/tweet-cards/static/js/main.ab0f997a.js.map",
+    "551.99239681.chunk.css.map": "/tweet-cards/static/css/551.99239681.chunk.css.map",
+    "551.766610c6.chunk.js.map": "/tweet-cards/static/js/551.766610c6.chunk.js.map",
+    "590.8f2c3ec1.chunk.css.map": "/tweet-cards/static/css/590.8f2c3ec1.chunk.css.map",
+    "590.47cff92b.chunk.js.map": "/tweet-cards/static/js/590.47cff92b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4a4768d.css",
-    "static/js/main.e4e53d64.js"
+    "static/js/main.ab0f997a.js"
   ]
 }
