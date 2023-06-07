@@ -16,8 +16,8 @@ const Home = () => {
         Go to tweets
       </Link>
       <div className={css.imgWrapper}>
-        <img src={follow} alt="" />
-        <img src={following} alt="" />
+        <img src={follow} alt="" width="280px" height="360px" />
+        <img src={following} alt="" width="280px" height="360px" />
       </div>
     </section>
   );
