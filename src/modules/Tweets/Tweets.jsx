@@ -64,23 +64,30 @@ const Tweets = () => {
 
   const followingFilter = async () => {
     const getAllUsers = await getUsers();
-    const followers = getAllUsers.filter(user => user.isFollowers === true);
+    const followers = getAllUsers.filter(
+      user => localStorage.getItem(`following_${user.id}`) === 'true'
+    );
+
     if (followers.length === 0) {
       return toasty.toastInfo('Following list empty');
     }
+
     setActiveFilter('following');
-    return setUsers(followers);
+    setUsers(followers);
   };
 
   const followFilter = async () => {
     const getAllUsers = await getUsers();
-    const followers = getAllUsers.filter(user => user.isFollowers !== true);
-    if (followers.length === 0) {
-      return toasty.toastInfo('Follow list empty');
-    }
-    setActiveFilter('follow');
+    const followers = getAllUsers.filter(
+      user => localStorage.getItem(`following_${user.id}`) === 'false'
+    );
 
-    return setUsers(followers);
+    if (followers.length === 0) {
+      return toasty.toastInfo('Following list empty');
+    }
+
+    setActiveFilter('follow');
+    setUsers(followers);
   };
 
   const allTweetsFilter = async () => {

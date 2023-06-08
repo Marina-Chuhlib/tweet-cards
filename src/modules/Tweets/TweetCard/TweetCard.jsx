@@ -5,35 +5,54 @@ import instance from 'shared/instance';
 import logo from '../../../img/logo.png';
 
 import css from './TweetCard.module.css';
+import { useEffect } from 'react';
 
 const TweetCard = ({
-  user: { id, avatar, tweets, followers, isFollowers },
+  user: { id, avatar, tweets, followers },
   setUsers,
   activeFilter,
 }) => {
   const [value, setValue] = useState(followers);
-  const text = isFollowers ? 'Following' : 'Follow';
-  const [texBtn, setTextBtn] = useState(text);
-  const [isFollow, setIsFollow] = useState(isFollowers);
+  const [texBtn, setTextBtn] = useState(() => {
+    const existingValue = localStorage.getItem(`following_${id}`);
+    const isFollowing = existingValue === 'true';
+    if (isFollowing) {
+      return 'Following';
+    }
+    return 'Follow';
+  });
+  const [isFollow, setIsFollow] = useState(false);
 
   const formatted = value.toLocaleString('en-US', { useGrouping: true });
 
+  useEffect(() => {
+    const local = localStorage.getItem(`following_${id}`);
+    if (local === 'true') {
+      setIsFollow(true);
+    }
+  }, [id]);
+
   const handleClick = () => {
     const updatedValue = isFollow === true ? false : true;
-    const newValue = isFollow === true ? value - 1 : value + 1;
+    const newValue = isFollow ? value - 1 : value + 1;
 
     setIsFollow(updatedValue);
     setValue(newValue);
     fetchUpdateTweet(id, newValue, updatedValue);
+
+    const local = localStorage.getItem(`following_${id}`);
+    if (local === 'true') {
+      setIsFollow(false);
+    }
+    localStorage.setItem(`following_${id}`, updatedValue);
     toggleButton();
     return;
   };
 
-  const fetchUpdateTweet = async (id, value, isFollow) => {
+  const fetchUpdateTweet = async (id, value) => {
     try {
       const { data } = await instance.put(`/tweets/${id}`, {
         followers: value,
-        isFollowers: isFollow,
       });
 
       setUsers(prevUsers =>
@@ -49,7 +68,6 @@ const TweetCard = ({
                 return {
                   ...user,
                   followers: value,
-                  isFollowers: isFollow,
                 };
               }
             }
@@ -70,8 +88,8 @@ const TweetCard = ({
   };
 
   const toggleButton = () => {
-    const text = !isFollow ? 'Following' : 'Follow';
-    setTextBtn(text);
+    setTextBtn(prevState => (prevState === 'Follow' ? 'Following' : 'Follow'));
+
     return;
   };
 
@@ -107,7 +125,6 @@ TweetCard.propTypes = {
     avatar: PropTypes.string.isRequired,
     tweets: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
-    isFollowers: PropTypes.bool.isRequired,
   }).isRequired,
   setUsers: PropTypes.func.isRequired,
   activeFilter: PropTypes.string.isRequired,
