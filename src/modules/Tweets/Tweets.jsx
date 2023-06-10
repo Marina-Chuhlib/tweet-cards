@@ -64,9 +64,13 @@ const Tweets = () => {
 
   const followingFilter = async () => {
     const getAllUsers = await getUsers();
-    const followers = getAllUsers.filter(
-      user => localStorage.getItem(`following_${user.id}`) === 'true'
-    );
+
+    const localValue = JSON.parse(localStorage.getItem('users'));
+
+    const followers = getAllUsers.filter(user => {
+      const userData = localValue.find(data => data.id === user.id);
+      return userData && userData.isFollowing === true;
+    });
 
     if (followers.length === 0) {
       return toasty.toastInfo('Following list empty');
@@ -78,9 +82,12 @@ const Tweets = () => {
 
   const followFilter = async () => {
     const getAllUsers = await getUsers();
-    const followers = getAllUsers.filter(
-      user => localStorage.getItem(`following_${user.id}`) === 'false'
-    );
+    const localValue = JSON.parse(localStorage.getItem('users'));
+
+    const followers = getAllUsers.filter(user => {
+      const userData = localValue.find(data => data.id === user.id);
+      return !userData || !userData.isFollowing;
+    });
 
     if (followers.length === 0) {
       return toasty.toastInfo('Following list empty');

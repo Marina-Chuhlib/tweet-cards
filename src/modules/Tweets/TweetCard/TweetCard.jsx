@@ -13,39 +13,51 @@ const TweetCard = ({
   activeFilter,
 }) => {
   const [value, setValue] = useState(followers);
-  const [texBtn, setTextBtn] = useState(() => {
-    const existingValue = localStorage.getItem(`following_${id}`);
-    const isFollowing = existingValue === 'true';
-    if (isFollowing) {
-      return 'Following';
-    }
-    return 'Follow';
-  });
+  const [texBtn, setTextBtn] = useState('Follow');
   const [isFollow, setIsFollow] = useState(false);
 
   const formatted = value.toLocaleString('en-US', { useGrouping: true });
 
   useEffect(() => {
-    const local = localStorage.getItem(`following_${id}`);
-    if (local === 'true') {
-      setIsFollow(true);
+    const localValue = JSON.parse(localStorage.getItem('users'));
+    if (localValue) {
+      const user = localValue.find(user => user.id === id);
+      if (user && user.isFollowing) {
+        setTextBtn('Following');
+        setIsFollow(true);
+      }
     }
   }, [id]);
 
+  const noteToLocalStorage = (id, updatedValue) => {
+    const localValue = localStorage.getItem('users');
+    let usersData = [];
+    const newData = { id, isFollowing: updatedValue };
+
+    if (localValue) {
+      usersData = JSON.parse(localValue);
+      const existingUserIndex = usersData.findIndex(user => user.id === id);
+
+      if (existingUserIndex !== -1) {
+        usersData[existingUserIndex].isFollowing = updatedValue;
+        localStorage.setItem('users', JSON.stringify(usersData));
+        return;
+      }
+    }
+    usersData.push(newData);
+    localStorage.setItem('users', JSON.stringify(usersData));
+  };
+
   const handleClick = () => {
-    const updatedValue = isFollow === true ? false : true;
+    const updatedValue = isFollow ? false : true;
     const newValue = isFollow ? value - 1 : value + 1;
 
     setIsFollow(updatedValue);
     setValue(newValue);
     fetchUpdateTweet(id, newValue, updatedValue);
-
-    const local = localStorage.getItem(`following_${id}`);
-    if (local === 'true') {
-      setIsFollow(false);
-    }
-    localStorage.setItem(`following_${id}`, updatedValue);
     toggleButton();
+    noteToLocalStorage(id, updatedValue);
+
     return;
   };
 
@@ -88,7 +100,9 @@ const TweetCard = ({
   };
 
   const toggleButton = () => {
-    setTextBtn(prevState => (prevState === 'Follow' ? 'Following' : 'Follow'));
+    setTextBtn(prevState =>
+      prevState === 'Following' ? 'Follow' : 'Following'
+    );
 
     return;
   };
