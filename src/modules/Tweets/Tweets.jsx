@@ -138,14 +138,18 @@ const Tweets = () => {
             </ul>
             {hasPage && !activeFilter ? (
               <>
-                <button onClick={loadMoreBtn} className={css.loadMoreBtn}>
+                <button
+                  type="button"
+                  onClick={loadMoreBtn}
+                  className={css.loadMoreBtn}
+                >
                   Load more tweets
                 </button>
               </>
             ) : (
               <p className={css.notification}>Reached the end of the list</p>
             )}
-            <button onClick={goBackBtn} className={css.goBackBtn}>
+            <button type="button" onClick={goBackBtn} className={css.goBackBtn}>
               Back
             </button>
           </div>
@@ -153,6 +157,7 @@ const Tweets = () => {
 
         <div className={css.filter}>
           <button
+            type="button"
             onClick={followingFilter}
             className={`${css.filterBtn} ${
               activeFilter === 'following' ? 'active' : ''
@@ -161,6 +166,7 @@ const Tweets = () => {
             Show following
           </button>
           <button
+            type="button"
             onClick={followFilter}
             className={`${css.filterBtn} ${
               activeFilter === 'follow' ? 'active' : ''
@@ -169,6 +175,7 @@ const Tweets = () => {
             Show Follow
           </button>
           <button
+            type="button"
             onClick={allTweetsFilter}
             className={`${css.filterBtn} ${
               activeFilter === 'allTweets' ? 'active' : ''
